@@ -2,11 +2,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, setAuthToken } from '../services/api';
 import '../LoginPage.css';
-
+import { useEffect } from 'react';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.margin = '0';
+    document.body.style.fontFamily = 'Arial, sans-serif';
+    document.body.style.background = '#121212';
+    document.body.style.color = '#fff';
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.height = '100vh';
+    document.body.style.webkitFontSmoothing = 'antialiased';
+    document.body.style.mozOsxFontSmoothing = 'grayscale';
+
+    return () => {
+      document.body.style = ''; // Clear the styles when the component unmounts
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
 /* LoginPage.css */
 
-body {
+/* body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background: #121212;
@@ -11,7 +11,7 @@ body {
     height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
+  } */
   
   .login-container {
     background: #1f1f1f;
