@@ -1,0 +1,100 @@
+/* Dashboard.css */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #121212;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .dashboard-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dashboard-container h1, 
+  .dashboard-container h2 {
+    color: #e50914;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+  }
+  
+  .dashboard-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dashboard-container li {
+    background: #292929;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .dashboard-container li:hover {
+    transform: translateY(-5px);
+  }
+  
+  .dashboard-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .dashboard-container input[type="text"],
+  .dashboard-container input[type="number"] {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    background: #2d2d2d;
+    color: #fff;
+  }
+  
+  .dashboard-container input[type="text"]::placeholder,
+  .dashboard-container input[type="number"]::placeholder {
+    color: #888;
+  }
+  
+  .dashboard-container input[type="text"]:focus,
+  .dashboard-container input[type="number"]:focus {
+    outline: none;
+    border-color: #e50914;
+    background: #3a3a3a;
+  }
+  
+  .dashboard-container button {
+    background-color: #e50914;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .dashboard-container button:hover {
+    background-color: #ff0a16;
+    transform: translateY(-3px);
+  }
+  
+  .dashboard-container button:active {
+    background-color: #c10812;
+    transform: translateY(1px);
+  }
+  
