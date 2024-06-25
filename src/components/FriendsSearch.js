@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 
-const FriendsSearch = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+const SearchBar = ({ onSearch }) => {
+    const [query, setQuery] = useState('');
 
-    const handleSearch = () => {
-        // Implement your search logic here
-        console.log('Searching for:', searchQuery);
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        if (query.trim() !== '') {
+            try {
+                // const results = await searchFriends(query); // Call API function to search
+                // onSearch(results); // Pass search results to parent component
+            } catch (error) {
+                console.error('Error searching friends:', error);
+                // Handle error if needed
+            }
+        }
     };
 
     return (
-        <div>
-            <h2>Friends Search</h2>
-            <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-            <button onClick={handleSearch}>Search</button>
-            {/* Display search results or other content */}
-        </div>
+        <form onSubmit={handleSearch}>
+            <input
+                type="text"
+                placeholder="Search by username "
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+            />
+            <button type="submit">Search</button>
+        </form>
     );
 };
 
-export default FriendsSearch;
+export default SearchBar;

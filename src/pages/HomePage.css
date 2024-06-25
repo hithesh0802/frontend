@@ -1,0 +1,114 @@
+/* body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } */
+  
+  .home-container {
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    margin-top: 10vh;
+  }
+  
+  .header {
+    margin-bottom: 40px;
+  }
+  
+  .header h1 {
+    font-size: 3em;
+    color: #e50914;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .button-container .btn {
+    background-color: #e50914;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 0 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .button-container .btn:hover {
+    background-color: #ff0a16;
+    transform: translateY(-3px);
+  }
+  
+  .button-container .btn:active {
+    background-color: #c10812;
+    transform: translateY(1px);
+  }
+  
+  .fitness-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 40px;
+  }
+  
+  .feature {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 0 20px;
+    text-align: left;
+  }
+  
+  .feature h2 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .feature ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .feature li {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #ccc; 
+  }
+  
+  .footer {
+    margin-top: 40px;
+  }
+  
+  .footer p {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  

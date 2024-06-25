@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, setAuthToken } from '../services/api';
-import '../LoginPage.css';
+import { loginUser } from '../services/api';
+import './LoginPage.css';
 import { useEffect } from 'react';
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
