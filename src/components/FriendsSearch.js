@@ -1,32 +1,52 @@
+// SearchFriends.js
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const SearchBar = ({ onSearch }) => {
-    const [query, setQuery] = useState('');
+const SearchFriends = ({ userId }) => {
+  const [username, setUsername] = useState('');
+  const [searchResult, setSearchResult] = useState(null);
 
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        if (query.trim() !== '') {
-            try {
-                // const results = await searchFriends(query); // Call API function to search
-                // onSearch(results); // Pass search results to parent component
-            } catch (error) {
-                console.error('Error searching friends:', error);
-                // Handle error if needed
-            }
-        }
-    };
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`/api/search-friends`, {
+        userId,
+        username
+      });
+      setSearchResult(response.data);
+    } catch (error) {
+      console.error('Error searching for friends:', error);
+    }
+  };
 
-    return (
-        <form onSubmit={handleSearch}>
-            <input
-                type="text"
-                placeholder="Search by username "
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-            />
-            <button type="submit">Search</button>
-        </form>
-    );
+  return (
+    <div className="search-friends-container">
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder="Search for friends..."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+      {searchResult && (
+        <div className="search-results">
+          {searchResult.length > 0 ? (
+            searchResult.map((friend) => (
+              <div key={friend._id} className="friend-card">
+                <p>{friend.username}</p>
+              </div>
+            ))
+          ) : (
+            <p>No friends found.</p>
+          )}
+        </div>
+      )}
+    </div>
+  );
 };
 
-export default SearchBar;
+export default SearchFriends;
+

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getWorkouts, getGoals, createGoal, updateProgress } from '../services/api';
+import { getWorkouts, getGoals, createGoal, updateProgress, searchFriend, MyProfile } from '../services/api';
 import { createWorkout } from '../services/api';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from './FriendsSearch';
 import './DashBoard.css';
 
 const Dashboard = () => {
@@ -17,7 +16,22 @@ const Dashboard = () => {
     const [target,setTarget]= useState('');
     const [progress,setProgress]= useState('');
     const navigate= useNavigate();
-    const [searchResults, setSearchResults]=useState([]);
+    const [username, setUsername] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        try {
+        await searchFriend('666ff7191e7a2cc177645e07',username).then((res)=>{
+            console.log(res);
+            setSearchResult(res);
+        })
+        } catch (error) {
+        console.error('Error searching for friends:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchWorkouts = async () => {
@@ -42,8 +56,21 @@ const Dashboard = () => {
             }
         };
 
+        const fetchProfile = async () => {
+            try {
+            const response =await MyProfile();
+            console.log(response.data,response);
+            setUser(response);
+            setLoading(false);
+            } catch (error) {
+            console.error('Error fetching profile:', error);
+            setLoading(false);
+            }
+        };
+
         fetchWorkouts();
         fetchGoals();
+        fetchProfile();
     }, []);
 
     useEffect(()=>{
@@ -74,15 +101,9 @@ const Dashboard = () => {
         navigate('/login');
     };
 
-    const handleSearchResults = (results) => {
-        setSearchResults(results);
-    };
-
     const handleProgressUpdate = async (goalId, currentProgress) => {
         try {
-            // const token = localStorage.getItem('token');
             await updateProgress(goalId, currentProgress );
-            // fetchGoals();
         } catch (err) {
             console.log("couldn't update progress!", err);
         }
@@ -105,12 +126,19 @@ const Dashboard = () => {
         return <div>Error: {error}</div>;
     }
 
+      if (loading) {
+        return <div>Loading...</div>;
+      }
+    
+      if (!user) {
+        return <div>User not found</div>;
+      }
+
     return (
         <div className="dashboard">
             <nav className="navbar">
                 <h1>Dashboard</h1>
-                <SearchBar onSearch={handleSearchResults} />
-                {/* <FriendList friends={searchResults} /> */}
+                
                 <div className="nav-links">
                     {/* <Link to="/profile" className='profile-button' >Profile</Link> */}
                     <button className='logout-button' onClick={handleLogout}>Logout</button>
@@ -119,9 +147,42 @@ const Dashboard = () => {
             <div>
 
             </div>
+
+            <div className="search-friends-container">
+                    <form onSubmit={handleSearch}>
+                        <input
+                        type="text"
+                        placeholder="Add/search friends by Username..."
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                        />
+                        <button type="submit">Search</button>
+                    </form>
+
+                    <div className="search-results">
+                            {searchResult.length > 0 ? (
+                            searchResult.map((result) => (
+                                <div key={result._id} className="friend-card">
+                                <h3>Username : {result.username}</h3>
+                                <p>Email: {result.email}</p>
+                                </div>
+                            ))
+                            ) : (
+                            <p>No friends found</p>
+                            )}
+                        </div>
+                    </div>
             <div className="dashboard-content">
                 <div className="dashboard-section">
-                    <h2>Your Workouts</h2>
+                <div className="profile-container">
+                    <h2>My Profile</h2>
+                    <div className="profile-details">
+                        <p><strong>Username:</strong> {user.username}</p>
+                        <p><strong>Email:</strong> {user.email}</p>
+                    </div>
+                    </div>
+                    <h2>My Workouts</h2>
                     <div className="card-container">
                         {workouts.map(workout => (
                             <div className="card" key={workout._id}>
@@ -135,7 +196,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="dashboard-section">
-                    <h2>Your Goals</h2>
+                    <h2>My Goals</h2>
                     <div className="card-container">
                         {goals.map(goal => (
                             <div className="card" key={goal._id}>
@@ -148,7 +209,7 @@ const Dashboard = () => {
                         <div>
                         <input className="input-container"
                             type="number"
-                            placeholder="Update new progress"
+                            placeholder="Update current progress"
                             onChange={(e) => { setProgress(e.target.value)
                             }}
                         />

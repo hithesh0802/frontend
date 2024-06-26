@@ -92,13 +92,35 @@ export const updateProgress = async (goalId, currentProgress) => {
   }
 };
 
-export const searchFriend= async(username) =>{
+export const searchFriend= async(id,username) =>{
+  console.log(id,username);
   try{
-    const response= axios.get(`${API_URL}/users`,username);
-    console.log(response.data);
+    const body ={
+      username : username
+    };
+    console.log(`${API_URL}/users/friends/${id}`,body);
+    const response= await axios.post(`${API_URL}/users/friends/${id}`,body,{
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     return response.data;
   }catch(error){
     console.log('error finding users',error);
+    throw error;
+  }
+}
+
+export const MyProfile= async()=>{
+  try{
+    const token = localStorage.getItem('token');
+    console.log(token);
+    const response= await axios.get(`${API_URL}/users/profile`, {
+      headers: {Authorization : `Bearer ${token}`} ,
+    });
+    return response.data;
+  }catch(error){
+    console.log("error fetching profile",error);
     throw error;
   }
 }

@@ -221,3 +221,65 @@ input[type="number"] {
   background-color: #c10812;
   transform: translateY(1px);
 }
+
+/* SearchFriends.css */
+.search-friends-container {
+  min-width: 400px;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.search-friends-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-friends-container input[type="text"] {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 100%;
+}
+
+.search-friends-container button {
+  background-color: #e50914;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.search-friends-container button:hover {
+  background-color: #ff0a16;
+}
+
+.search-results {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.friend-card {
+  background: #292929;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.profile-container {
+  background: #292929;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.profile-details p {
+  margin: 10px 0;
+}
