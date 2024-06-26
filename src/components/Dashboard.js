@@ -24,7 +24,7 @@ const Dashboard = () => {
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-        await searchFriend('666ff7191e7a2cc177645e07',username).then((res)=>{
+        await searchFriend(`${user._id}`,username).then((res)=>{
             console.log(res);
             setSearchResult(res);
         })
@@ -101,6 +101,10 @@ const Dashboard = () => {
         navigate('/login');
     };
 
+    const handleFeed= async() =>{
+        navigate('/socialfeed');
+    }
+
     const handleProgressUpdate = async (goalId, currentProgress) => {
         try {
             await updateProgress(goalId, currentProgress );
@@ -142,6 +146,7 @@ const Dashboard = () => {
                 <div className="nav-links">
                     {/* <Link to="/profile" className='profile-button' >Profile</Link> */}
                     <button className='logout-button' onClick={handleLogout}>Logout</button>
+                    <button className='logout-button' onClick={handleFeed}>Social Feed</button>
                 </div>
             </nav>
             <div>
