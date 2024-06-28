@@ -1,0 +1,111 @@
+/* SocialFeed.css */
+/* body {
+    background-color: #f0f0f0; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+} */
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.social-feed-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.social-feed-header {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.social-feed-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-feed-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-feed-item h3 {
+    margin-top: 0;
+    color: #0073b1;
+    font-size: larger;
+}
+
+.social-feed-item p {
+    color: #181313;
+}
+
+.workouts,
+.goals {
+    margin-top: 20px;
+}
+
+.workouts h4,
+.goals h4 {
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.workouts ul,
+.goals ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.workouts li,
+.goals li {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.workouts li:hover,
+.goals li:hover {
+    background-color: #e9ecef;
+}
+
+@media (max-width: 600px) {
+    .social-feed-container {
+        padding: 10px;
+    }
+
+    .social-feed-header {
+        font-size: 1.5em;
+    }
+
+    .social-feed-item {
+        padding: 15px;
+    }
+
+    .workouts li,
+    .goals li {
+        padding: 8px;
+    }
+}

@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import Dashboard from './components/Dashboard.js';
 import WorkoutForm from './components/WorkoutForm.js';
 import SocialFeed from './components/SocialFeed.js';
+import './App.css';
 const App = () => (
   <Router>
     <Routes>

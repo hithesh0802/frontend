@@ -59,7 +59,7 @@ const Dashboard = () => {
         const fetchProfile = async () => {
             try {
             const response =await MyProfile();
-            console.log(response.data,response);
+            // console.log(response.data,response);
             setUser(response);
             setLoading(false);
             } catch (error) {

@@ -124,3 +124,33 @@ export const MyProfile= async()=>{
     throw error;
   }
 }
+
+export const fetchAllUsers = async () => {
+  try {
+      const response = await axios.get(`${API_URL}/socialfeed/users`);
+      return response.data.users;
+  } catch (error) {
+      console.error('Error fetching users:', error);
+      throw error;
+  }
+};
+
+export const fetchWorkoutsByUserId = async (userId) => {
+  try{
+    const response = await axios.get(`${API_URL}/socialfeed/workouts/${userId}`);
+    return response.data.workouts;
+  } catch (error){
+    console.error('Error fetching users:', error);
+    throw error;
+  }
+};
+
+export const fetchGoalsByUserId = async (userId) => {
+  try{
+  const response = await axios.get(`${API_URL}/socialfeed/goals/${userId}`);
+  return response.data.goals;
+  }catch(error){
+    console.error('Error fetching users:', error);
+    throw error;
+  }
+};
